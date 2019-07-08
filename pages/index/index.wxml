@@ -1,0 +1,60 @@
+<!--index.wxml-->
+<!-- 商品类型 -->
+<scroll-view class='select-item-area'
+             scroll-x='{{true}}'>
+  <view class='hor'>
+    <view wx:for='{{goodsTypeList}}'
+          wx:for-item='goodsTypeItem'
+          wx:for-index='goodsTypeIndex'
+          wx:key='{{goodsTypeIndex}}'
+          class='select-item item-hor'
+          bindtap='tapGoodsType'
+          data-type='{{goodsTypeItem.type}}'>
+      <view class='select-item-title'>
+        {{goodsTypeItem.name}}
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- Banner -->
+<swiper class='banner'
+        circular="{{true}}"
+        indicator-dots="{{true}}"
+        autoplay="{{true}}"
+        interval="5000"
+        duration="300"
+        vertical="{{false}}"
+        indicator-active-color="rgba(255, 255, 255, 1)"
+        indicator-color="rgba(122, 122, 122, 1)">
+  <swiper-item wx:for="{{bannerList}}"
+               wx:for-item="bannerItem"
+               wx:for-index="bannerIndex"
+               wx:key="bannerIndex">
+    <image class='banner-item'
+           data-index="{{bannerIndex}}"
+           data-targeturl="{{bannerItem.bannerTargetUrl}}"
+           data-bannerurl="{{bannerItem.bannerImageUrl}}"
+           bindtap='tapBanner'
+           src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
+           mode='scaleToFill'>
+    </image>
+  </swiper-item>
+</swiper>
+<!-- 商品类型 -->
+<scroll-view class='select-item-area'
+             scroll-x='{{true}}'>
+  <view class='hor'>
+    <view wx:for='{{actionList}}'
+          wx:for-item='actionItem'
+          wx:for-index='actionIndex'
+          wx:key='{{actionIndex}}'
+          class='select-item item-hor'
+          bindtap='tapAction'
+          data-target='{{actionItem.target}}'
+          data-actionid='{{actionItem.id}}'>
+      <view class='select-item-title'>
+        {{actionItem.name}}
+      </view>
+    </view>
+  </view>
+</scroll-view>
