@@ -1,5 +1,7 @@
 <!--index.wxml-->
+<!-- =========================================================================================== -->
 <!-- 商品类型 -->
+<!-- =========================================================================================== -->
 <scroll-view class='select-item-area'
              scroll-x='{{true}}'>
   <view class='hor'>
@@ -10,13 +12,15 @@
           class='select-item item-hor'
           bindtap='tapGoodsType'
           data-type='{{goodsTypeItem.type}}'>
-      <view class='select-item-title'>
-        {{goodsTypeItem.name}}
+      <view class='select-item-title {{goodsTypeIndex<goodsTypeList.length-1?"select-item-title-split":""}}'>
+      {{goodsTypeItem.name}}
       </view>
     </view>
   </view>
 </scroll-view>
+<!-- =========================================================================================== -->
 <!-- Banner -->
+<!-- =========================================================================================== -->
 <swiper class='banner'
         circular="{{true}}"
         indicator-dots="{{true}}"
@@ -40,7 +44,9 @@
     </image>
   </swiper-item>
 </swiper>
-<!-- 商品类型 -->
+<!-- =========================================================================================== -->
+<!-- 操作 -->
+<!-- =========================================================================================== -->
 <scroll-view class='select-item-area'
              scroll-x='{{true}}'>
   <view class='hor'>
@@ -52,9 +58,161 @@
           bindtap='tapAction'
           data-target='{{actionItem.target}}'
           data-actionid='{{actionItem.id}}'>
-      <view class='select-item-title'>
-        {{actionItem.name}}
+      <view class='select-item-title {{actionIndex<actionList.length-1?"select-item-title-split":""}}'>
+      {{actionItem.name}}
       </view>
     </view>
   </view>
 </scroll-view>
+<!-- =========================================================================================== -->
+<!-- 新人专享 -->
+<!-- =========================================================================================== -->
+<i-panel>
+  <view class='section-title-area'>
+    <view class='select-item item-hor'>
+      <view class='select-item-title select-item-title-split'>
+      新人专享
+      </view>
+    </view>
+    <view class='select-item item-hor'>
+      <i-icon type="coupons_fill" 
+              size="28" 
+              color="#ee2c2c">
+      </i-icon>
+      <view class='select-item-title' 
+            style='padding-left: 5rpx'>
+            新客大礼包
+      </view>
+    </view>
+    <view class='section-title-detail-area' 
+          bindtap='tapNewCustomer'>
+      <view class='section-title-detail-info'>
+      查看更多
+      </view>
+      <i-icon type="enter" 
+              size='28' 
+              color='#778899'></i-icon>
+    </view>
+  </view>
+  <scroll-view class='new-customer-action-area'
+               scroll-x='{{true}}'>
+    <view class='hor'>
+      <view class='new-customer-action-item'
+            bindtap='tapNewCustomerPackage'>
+        <image class='new-customer-action-package' 
+               src='../../resource/hongbao.jpg' 
+               mode='scaleToFill'>
+        </image>
+      </view>
+      <view class='new-customer-action-item'
+            wx:for='{{newCustomerGoodsList}}'
+            wx:for-item='goodsItem'
+            wx:for-index='goodsIndex'
+            wx:key='{{goodsIndex}}'
+            bindtap='tapNewCustomerGoods'
+            data-goodsid='{{goodsItem.id}}'>
+        <view class='new-customer-action-goods'>
+          <image class='new-customer-action-goods-image'
+                 src='{{goodsItem.imageUrl}}'
+                 mode='scaleToFill'>
+          </image>
+          <view class='new-customer-action-goods-name'>
+          {{goodsItem.name}}
+          </view>
+          <view class='new-customer-action-goods-price'>
+            <view class='new-customer-action-goods-price-logo'>
+            新人价
+            </view>
+            <view class='new-customer-action-goods-price-value'>
+            ￥{{goodsItem.price}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</i-panel>
+<!-- =========================================================================================== -->
+<!-- 团购专区 -->
+<!-- =========================================================================================== -->
+<i-panel>
+  <view class='section-title-area'>
+    <view class='select-item item-hor'>
+      <view class='select-item-title select-item-title-split'>
+      团购专区
+      </view>
+    </view>
+    <view class='select-item item-hor'>
+      <i-icon type='publishgoods_fill'
+            size="28" 
+            color="#ee2c2c">
+      </i-icon>
+      <view class='select-item-title' 
+            style='padding-left: 5rpx'>
+            实惠多多 药不能停
+      </view>
+    </view>
+    <view class='section-title-detail-area' 
+          bindtap='tapGroupon'>
+      <view class='section-title-detail-info'>
+      查看更多
+      </view>
+      <i-icon type="enter" 
+              size='28' 
+              color='#778899'>
+      </i-icon>
+    </view>
+  </view>
+  <view class='groupon-goods-item'
+        wx:for='{{goodsList}}'
+        wx:for-item='goodsItem'
+        wx:for-index='goodsIndex'
+        wx:key='{{goodsIndex}}'
+        bindtap='tapGrouponGoods'
+        data-goodsid='{{goodsItem.id}}'>
+    <image class='groupon-goods-item-image'
+           src='{{goodsItem.imageUrl}}'
+           mode='scaleToFit'>
+    </image>
+    <view class='groupon-goods-item-info'>
+      <view class='groupon-goods-item-info-content goods-name bottom-space'>
+      {{goodsItem.name}}  
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space goods-factory'>
+      厂家：{{goodsItem.factory}}
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space'>
+        <view class='groupon-goods-item-info-content goods-specification'>
+        规格：{{goodsItem.specification}}
+        </view>
+        <view class='groupon-goods-item-info-content goods-unit'>
+        单位：{{goodsItem.unit}}
+        </view>
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space goods-approval'>
+      批准文号：{{goodsItem.approval}}
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space'>
+        <view class='groupon-goods-item-info-content goods-differCount'>
+        还差{{goodsItem.differCount}}人拼成
+        </view>
+        <view class='groupon-goods-item-info-content goods-currentCount'>
+        已拼{{goodsItem.currentCount>1000?"1000+":goodsItem.currentCount}}
+        </view>
+      </view>
+      <view class='groupon-goods-item-info-content'>
+        <view class='groupon-goods-item-info-content goods-groupon-price'>
+        ￥{{goodsItem.grouponPrice}}
+        </view>
+        <view class='groupon-goods-item-info-content goods-original-price'>
+        ￥{{goodsItem.originalPrice}}
+        </view>
+        <view class='group-goods-item-info-content goods-join-button'
+              catchtap='tapJoinGroupon'
+              data-goodsid='{{goodsItem.id}}'>
+        药抢
+        </view>
+      </view>
+    </view>
+  </view>
+</i-panel>
