@@ -1,2 +1,35 @@
 <!--pages/seckill/seckill.wxml-->
-<text>pages/seckill/seckill.wxml</text>
+<i-tabs current="{{currentType.typeId}}"
+        bindchange="tapType">
+  <i-tab wx:for="{{typeList}}"
+         wx:for-item="typeItem"
+         wx:for-index="typeIndex"
+         wx:key="{{typeItem.typeId}}"
+         key="{{typeIndex}}"
+         title="{{typeItem.typeName}}"
+         color="#EE2C2C">
+  </i-tab>
+</i-tabs>
+<swiper class='banner'
+        circular="{{true}}"
+        indicator-dots="{{true}}"
+        autoplay="{{true}}"
+        interval="5000"
+        duration="300"
+        vertical="{{false}}"
+        indicator-active-color="rgba(255, 255, 255, 1)"
+        indicator-color="rgba(122, 122, 122, 1)">
+  <swiper-item wx:for="{{bannerList}}"
+               wx:for-item="bannerItem"
+               wx:for-index="bannerIndex"
+               wx:key="bannerIndex">
+    <image class='banner-item'
+           data-index="{{bannerIndex}}"
+           data-targeturl="{{bannerItem.bannerTargetUrl}}"
+           data-bannerurl="{{bannerItem.bannerImageUrl}}"
+           bindtap='tapBanner'
+           src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
+           mode='scaleToFill'>
+    </image>
+  </swiper-item>
+</swiper>

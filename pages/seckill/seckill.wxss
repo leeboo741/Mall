@@ -1,1 +1,10 @@
 /* pages/seckill/seckill.wxss */
+.banner{
+  width: 100%;
+  height: 200rpx;
+}
+
+.banner-item{
+  width: 100%;
+  height: 100%;
+}
