@@ -143,9 +143,13 @@
 
 .groupon-goods-item-info{
   margin-left: 10rpx;
+  padding-bottom: 10rpx;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  border-style: none none solid none;
+  border-width: 1rpx;
+  border-color: #ebebeb;
 }
 
 .groupon-goods-item-info-content{
@@ -214,4 +218,5 @@
   color: white;
   font-size: 30rpx;
   border-radius: 8rpx;
+  flex-grow: 0;
 }

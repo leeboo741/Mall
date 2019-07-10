@@ -31,19 +31,19 @@ Page({
     ], // 商品分类列表
     bannerList:[
       {
-        bannerImageUrl: "http://huji820.oicp.net:25875/349325f9d43aeabee95f17fc18ebe0f03493/349325f9d43aeabee95f17fc18ebe0f0.jpg", // 图片地址
+        bannerImageUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562730702177&di=df76908f37b8c5aa57db5758118e6814&imgtype=0&src=http%3A%2F%2Fjkzx8.com%2Fuploads%2F160721%2F40-160H11146103M.jpg", // 图片地址
         bannerTargetUrl: "http://huji820.oicp.net:25875/fd1ca163-c267-4e66-a059-669523202cf0.html", // 内容地址
       },
       {
-        bannerImageUrl: "http://huji820.oicp.net:25875/4ebd322f86c1893b56e23c241a7f2c824ebd/4ebd322f86c1893b56e23c241a7f2c82.jpg",
+        bannerImageUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1398342743,2402782757&fm=26&gp=0.jpg",
         bannerTargetUrl: "http://huji820.oicp.net:25875/3375f542-11fe-44d3-8900-0d1a94cc6f62.html",
       },
       {
-        bannerImageUrl: "http://huji820.oicp.net:25875/24955c9a7e970b811b5bf8535dcbcd1e2495/24955c9a7e970b811b5bf8535dcbcd1e.jpg",
+        bannerImageUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562730817614&di=e2f390f9a6f1020b8dc44f3fe7adea49&imgtype=0&src=http%3A%2F%2Fphotocdn.sohu.com%2F20151211%2Fmp47894751_1449804610035_1_th.jpeg",
         bannerTargetUrl: "http://huji820.oicp.net:25875/ab98c06e-dd20-4965-90e2-5c5df7046413.html",
       },
       {
-        bannerImageUrl: "http://huji820.oicp.net:25875/828f7237aac6d5c3ab65ad738cb8f31a828f/828f7237aac6d5c3ab65ad738cb8f31a.jpg",
+        bannerImageUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562730835323&di=31af2d379250c450b38cf97ce0924f3b&imgtype=0&src=http%3A%2F%2Fs13.sinaimg.cn%2Fmw690%2F005CQsmEzy6W5vAuHxO8c%26690",
         bannerTargetUrl: "http://huji820.oicp.net:25875/4dbf6753-ea06-483c-a27a-489091dbe070.html",
       },
     ], // banner数据列表
@@ -178,6 +178,15 @@ Page({
 
   /** =========================================================== */
   /** ================ 页面生命周期 End */
+  /** =========================================================== */
+
+
+  /** =========================================================== */
+  /** ================ 网络请求 Start */
+  /** =========================================================== */
+
+  /** =========================================================== */
+  /** ================ 网络请求 End */
   /** =========================================================== */
 
   /** =========================================================== */

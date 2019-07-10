@@ -1,10 +1,149 @@
 /* pages/seckill/seckill.wxss */
 .banner{
   width: 100%;
-  height: 200rpx;
+  height: 300rpx;
 }
 
 .banner-item{
   width: 100%;
   height: 100%;
+}
+
+.count-down-area{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx 0rpx;
+}
+
+.seckill-time-area{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.seckill-time{
+  font-size: 30rpx;
+  color: #778899;
+}
+
+.count-down{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.count-down-title{
+  font-size: 30rpx;
+  color: #778899;
+}
+
+.count-down-value{
+  margin: 0rpx 20rpx;
+  padding: 0rpx 20rpx;
+  display: flex;
+  flex-direction: row;
+  background: red;
+  color: white;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-radius: 8rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  align-items: flex-end;
+}
+
+.seckill-goods-item{
+  display: flex;
+  flex-direction: row;
+  padding: 10rpx 20rpx;
+}
+
+.seckill-goods-item-image{
+  flex-shrink: 0;
+  width: 32vw;
+  height: 300rpx;
+}
+
+.seckill-goods-item-info{
+  margin-left: 10rpx;
+  padding-bottom: 10rpx;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-style: none none solid none;
+  border-width: 1rpx;
+  border-color: #ebebeb;
+}
+
+.seckill-goods-item-info-content{
+  flex-grow: 1;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bottom-space{
+  margin-bottom: 10rpx;
+}
+
+.goods-name{
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1c2438;
+}
+
+.goods-factory{
+  font-size: 28rpx;
+  color: #495A80;
+}
+
+.goods-specification{
+  font-size: 28rpx;
+  color: #495A80;
+}
+
+.goods-unit{
+  font-size: 28rpx;
+  color: #495A80;
+}
+
+.goods-approval{
+  font-size: 28rpx;
+  color: #495A80;
+}
+
+.goods-differCount{
+  font-size: 28rpx;
+  color: red;
+}
+
+.goods-currentCount{
+  font-size: 28rpx;
+  color: red;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.goods-seckill-price{
+  font-size: 32rpx;
+  font-weight: 600;
+  color: red;
+  flex-grow: 0;
+}
+
+.goods-original-price{
+  text-decoration: line-through;
+  font-size: 28rpx;
+}
+
+.goods-join-button{
+  padding: 10rpx 25rpx;
+  background: red;
+  color: white;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  flex-grow: 0;
 }

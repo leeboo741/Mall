@@ -1,35 +1,127 @@
 <!--pages/seckill/seckill.wxml-->
-<i-tabs current="{{currentType.typeId}}"
-        bindchange="tapType">
-  <i-tab wx:for="{{typeList}}"
-         wx:for-item="typeItem"
-         wx:for-index="typeIndex"
-         wx:key="{{typeItem.typeId}}"
-         key="{{typeIndex}}"
-         title="{{typeItem.typeName}}"
-         color="#EE2C2C">
-  </i-tab>
-</i-tabs>
-<swiper class='banner'
-        circular="{{true}}"
-        indicator-dots="{{true}}"
-        autoplay="{{true}}"
-        interval="5000"
-        duration="300"
-        vertical="{{false}}"
-        indicator-active-color="rgba(255, 255, 255, 1)"
-        indicator-color="rgba(122, 122, 122, 1)">
-  <swiper-item wx:for="{{bannerList}}"
-               wx:for-item="bannerItem"
-               wx:for-index="bannerIndex"
-               wx:key="bannerIndex">
-    <image class='banner-item'
-           data-index="{{bannerIndex}}"
-           data-targeturl="{{bannerItem.bannerTargetUrl}}"
-           data-bannerurl="{{bannerItem.bannerImageUrl}}"
-           bindtap='tapBanner'
-           src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
-           mode='scaleToFill'>
+<!-- =========================================================================================== -->
+<!-- 类型选择 -->
+<!-- =========================================================================================== -->
+<i-panel>
+  <i-tabs current="{{currentType.typeId}}"
+          bindchange="tapType">
+    <i-tab color="#EE2C2C" 
+           wx:for="{{typeList}}"
+           wx:for-item="typeItem"
+           wx:for-index="typeIndex"
+           wx:key="{{typeItem.typeId}}"
+           key="{{typeIndex}}"
+           title="{{typeItem.typeName}}">
+    </i-tab>
+  </i-tabs>
+</i-panel>
+<!-- =========================================================================================== -->
+<!-- Banner -->
+<!-- =========================================================================================== -->
+<i-panel>
+  <swiper class='banner'
+          circular="{{true}}"
+          indicator-dots="{{true}}"
+          autoplay="{{true}}"
+          interval="5000"
+          duration="300"
+          vertical="{{false}}"
+          indicator-active-color="rgba(255, 255, 255, 1)"
+          indicator-color="rgba(122, 122, 122, 1)">
+    <swiper-item wx:for="{{bannerList}}"
+                 wx:for-item="bannerItem"
+                 wx:for-index="bannerIndex"
+                 wx:key="bannerIndex">
+      <image class='banner-item'
+             data-index="{{bannerIndex}}"
+             data-targeturl="{{bannerItem.bannerTargetUrl}}"
+             data-bannerurl="{{bannerItem.bannerImageUrl}}"
+             bindtap='tapBanner'
+             src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
+             mode='scaleToFill'>
+      </image>
+    </swiper-item>
+  </swiper>
+</i-panel>
+<!-- =========================================================================================== -->
+<!-- 倒计时 -->
+<!-- =========================================================================================== -->
+<view class='count-down-area'>
+  <view class='seckill-time-area'>
+    <i-icon type='time'
+            size='28' 
+            color='#778899'>
+    </i-icon>
+    <view class='seckill-time'>
+    {{currentSeckillStartTime}}场正在疯抢
+    </view>
+  </view>
+  <view class='count-down'>
+    <view class='count-down-title'>距结束还剩</view>
+    <i-count-down
+              target="{{countDownTarget}}"
+              format="{{myFormat}}"
+              clear-timer="{{false}}"
+              countdown-class="count-down-value"
+              bindcallback="countDownFinish">
+    </i-count-down>
+  </view>
+</view>
+<!-- =========================================================================================== -->
+<!-- 秒杀商品列表 -->
+<!-- =========================================================================================== -->
+<view class='seckill-goods-item'
+        wx:for='{{seckillGoodsList}}'
+        wx:for-item='goodsItem'
+        wx:for-index='goodsIndex'
+        wx:key='{{goodsIndex}}'
+        bindtap='tapSeckillGoods'
+        data-goodsid='{{goodsItem.id}}'>
+    <image class='seckill-goods-item-image'
+           src='{{goodsItem.imageUrl}}'
+           mode='scaleToFit'>
     </image>
-  </swiper-item>
-</swiper>
+    <view class='seckill-goods-item-info'>
+      <view class='seckill-goods-item-info-content goods-name bottom-space'>
+      {{goodsItem.name}}  
+      </view>
+      <view class='seckill-goods-item-info-content bottom-space goods-factory'>
+      厂家：{{goodsItem.factory}}
+      </view>
+      <view class='seckill-goods-item-info-content bottom-space'>
+        <view class='seckill-goods-item-info-content goods-specification'>
+        规格：{{goodsItem.specification}}
+        </view>
+        <view class='seckill-goods-item-info-content goods-unit'>
+        单位：{{goodsItem.unit}}
+        </view>
+      </view>
+      <view class='seckill-goods-item-info-content bottom-space goods-approval'>
+      批准文号：{{goodsItem.approval}}
+      </view>
+      <view class='seckill-goods-item-info-content bottom-space'
+            hidden='{{currentType.typeId!=0}}'>
+        <i-progress class='seckill-goods-item-info-content goods-differCount'
+                    status="wrong"
+                    percent="{{goodsItem.seckillPercent}}">
+        </i-progress>
+        <view class='seckill-goods-item-info-content goods-currentCount'>
+        已抢{{goodsItem.currentSeckillCount}}{{goodsItem.unit}}
+        </view>
+      </view>
+      <view class='seckill-goods-item-info-content'>
+        <view class='seckill-goods-item-info-content goods-seckill-price'>
+        ￥{{goodsItem.seckillPrice}}
+        </view>
+        <view class='seckill-goods-item-info-content goods-original-price'>
+        ￥{{goodsItem.originalPrice}}
+        </view>
+        <view class='seckill-goods-item-info-content goods-join-button'
+              catchtap='tapJoinSecKill'
+              data-goodsid='{{goodsItem.id}}'
+              hidden='{{currentType.typeId!=0}}'>
+        秒杀
+        </view>
+      </view>
+    </view>
+  </view>

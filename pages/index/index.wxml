@@ -207,7 +207,7 @@
         <view class='groupon-goods-item-info-content goods-original-price'>
         ￥{{goodsItem.originalPrice}}
         </view>
-        <view class='group-goods-item-info-content goods-join-button'
+        <view class='groupon-goods-item-info-content goods-join-button'
               catchtap='tapJoinGroupon'
               data-goodsid='{{goodsItem.id}}'>
         药抢
