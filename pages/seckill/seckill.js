@@ -250,11 +250,11 @@ Page({
         countDownTime: tempStr
       })
     } else {
-      if (this.currentType.typeId == 0) {
+      if (this.data.currentType.typeId == 0) {
         this.setData({
           countDownTime: "本场秒杀已经结束！"
         }) 
-      } else if (this.currentType.typeId == 1) {
+      } else if (this.data.currentType.typeId == 1) {
         this.setData({
           countDownTime: "本场秒杀已经开始！"
         }) 
