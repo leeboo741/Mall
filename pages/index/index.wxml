@@ -40,7 +40,8 @@
            data-bannerurl="{{bannerItem.bannerImageUrl}}"
            bindtap='tapBanner'
            src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
-           mode='scaleToFill'>
+           mode='scaleToFill'
+           lazy-load='{{true}}'>
     </image>
   </swiper-item>
 </swiper>
@@ -114,7 +115,8 @@
         <view class='new-customer-action-goods'>
           <image class='new-customer-action-goods-image'
                  src='{{goodsItem.imageUrl}}'
-                 mode='scaleToFill'>
+                 mode='scaleToFill'
+                 lazy-load='{{true}}'>
           </image>
           <view class='new-customer-action-goods-name'>
           {{goodsItem.name}}
@@ -172,7 +174,8 @@
         data-goodsid='{{goodsItem.id}}'>
     <image class='groupon-goods-item-image'
            src='{{goodsItem.imageUrl}}'
-           mode='scaleToFit'>
+           mode='scaleToFit'
+           lazy-load='{{true}}'>
     </image>
     <view class='groupon-goods-item-info'>
       <view class='groupon-goods-item-info-content goods-name bottom-space'>

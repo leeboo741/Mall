@@ -38,7 +38,8 @@
              data-bannerurl="{{bannerItem.bannerImageUrl}}"
              bindtap='tapBanner'
              src='{{bannerItem.bannerImageUrl!=null?bannerItem.bannerImageUrl:"../../resource/placeholder_image.png"}}'
-             mode='scaleToFill'>
+             mode='scaleToFill'
+             lazy-load='{{true}}'>
       </image>
     </swiper-item>
   </swiper>
@@ -46,25 +47,32 @@
 <!-- =========================================================================================== -->
 <!-- 倒计时 -->
 <!-- =========================================================================================== -->
-<view class='count-down-area'>
+<view class='count-down-area'
+      hidden='{{currentType.typeId==2}}'>
   <view class='seckill-time-area'>
     <i-icon type='time'
             size='28' 
             color='#778899'>
     </i-icon>
-    <view class='seckill-time'>
+    <view wx:if='{{currentType.typeId==0}}' class='seckill-time'>
     {{currentSeckillStartTime}}场正在疯抢
+    </view>
+    <view wx:elif='{{currentType.typeId==1}}' class='seckill-time'>
+    {{nextSeckillStartTime}}即将开始！
     </view>
   </view>
   <view class='count-down'>
-    <view class='count-down-title'>距结束还剩</view>
-    <i-count-down
+    <view wx:if='{{currentType.typeId==0}}' class='count-down-title'>距结束还剩</view>
+    <view wx:elif='{{currentType.typeId==1}}' class='count-down-title'>距开始还有</view>
+    <view class='count-down-value'>{{countDownTime}}</view>
+    <!-- <i-count-down
               target="{{countDownTarget}}"
               format="{{myFormat}}"
-              clear-timer="{{false}}"
+              clear-timer="{{clearCountDown}}"
               countdown-class="count-down-value"
-              bindcallback="countDownFinish">
-    </i-count-down>
+              bindcallback="countDownFinish"
+              restart='{{countDownRestart}}'>
+    </i-count-down> -->
   </view>
 </view>
 <!-- =========================================================================================== -->
@@ -79,7 +87,8 @@
         data-goodsid='{{goodsItem.id}}'>
     <image class='seckill-goods-item-image'
            src='{{goodsItem.imageUrl}}'
-           mode='scaleToFit'>
+           mode='scaleToFit'
+           lazy-load='{{true}}'>
     </image>
     <view class='seckill-goods-item-info'>
       <view class='seckill-goods-item-info-content goods-name bottom-space'>

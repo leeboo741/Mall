@@ -4,7 +4,7 @@
     "i-tab": "/dist/tab/index",
     "i-panel": "/dist/panel/index",
     "i-icon": "/dist/icon/index",
-    "i-count-down":"/dist/count-down/index",
     "i-progress": "/dist/progress/index"
-  }
+  },
+  "navigationBarTitleText": "药秒杀"
 }

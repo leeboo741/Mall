@@ -46,10 +46,12 @@ Page({
         bannerTargetUrl: "http://huji820.oicp.net:25875/4dbf6753-ea06-483c-a27a-489091dbe070.html",
       },
     ], // banner 数据
-    currentSeckillStartTime: "2019-07-10 17:00", // 当前秒杀 开始时间
-    currentSeckillEndTime: "2019-07-10 18:00", // 当前秒杀 结束时间
-    nextSeckillStartTime: "2019-07-10 18:00", // 下次秒杀 开始时间
-    countDownTarget: 0, // 倒计时 时间
+    currentSeckillStartTime: "2019-07-11 17:00:00", // 当前秒杀 开始时间
+    currentSeckillEndTime: "2019-07-11 10:53:00", // 当前秒杀 结束时间
+    nextSeckillStartTime: "2019-07-11 10:54:00", // 下次秒杀 开始时间
+    countDownDuration: 0, // 倒计时 时间
+    countDownTime: "00:00:00", // 倒计时时间
+    countDownIntervalID: 0, // 倒计时计时器id
     myFormat: "hh:mm:ss", // 倒计时 时间格式
     seckillGoodsList: [
       {
@@ -105,10 +107,7 @@ Page({
     this.setData({
       currentType: this.data.typeList[0],
     })
-    let tempCountDown = new Date(this.data.currentSeckillEndTime).getTime();
-    this.setData({
-      countDownTarget: tempCountDown
-    })
+    this.getCountDownDuration();
     this.data.seckillGoodsList = this.setPrecent(this.data.seckillGoodsList);
     this.setData({
       seckillGoodsList: this.data.seckillGoodsList
@@ -152,7 +151,7 @@ Page({
   /** =========================================================== */
 
   /**
-   * 获取已抢百分比
+   * 获取已抢数量百分比
    */
   setPrecent: function (datasource) {
     for (let i = 0; i < datasource.length; i++) {
@@ -160,6 +159,127 @@ Page({
       tempGoodsObj.seckillPercent = (tempGoodsObj.currentSeckillCount * 100 / tempGoodsObj.seckillCount).toFixed(2)
     }
     return datasource;
+  },
+
+  /**
+   * 获取倒计时时间
+   */
+  getCountDownDuration: function () {
+    let tempCountDown = null;
+    
+    if (this.data.currentType.typeId == 0) { // 如果是正在疯抢 计算到秒杀结束时间
+      tempCountDown = new Date(this.data.currentSeckillEndTime).getTime() - new Date().getTime();
+    } else if (this.data.currentType.typeId == 1) { // 如果是即将开抢 计算到秒杀开始时间
+      tempCountDown = new Date(this.data.nextSeckillStartTime).getTime() - new Date().getTime();
+    } 
+
+    this.setData({
+      countDownDuration: tempCountDown,
+    })
+
+    // 开始计时
+    let that = this;
+    // 清空之前的定时器
+    clearInterval(this.data.countDownIntervalID);
+    // 打开新的计时器开始计时
+    this.data.countDownIntervalID = setInterval(function () {
+                                            that.countDown();
+                                          }, 1000);
+  },
+
+  /**
+   * 倒计时
+   */
+  countDown: function () {
+    let day = 0; // 天
+    let hour = 0; // 时
+    let min = 0; // 分
+    let sec = 0; // 秒
+    this.data.countDownDuration = this.data.countDownDuration - 1000;
+    if (this.data.countDownDuration > 0) { // 如果时间大于一秒 变更页面
+      let tempCountDownDuration = parseInt(this.data.countDownDuration / 1000);
+      // 天数
+      day = parseInt(tempCountDownDuration / (24 * 60 * 60));  
+      // 小时
+      hour = parseInt((tempCountDownDuration % (24 * 60 * 60)) / (60 * 60));
+      // 分钟
+      min = parseInt(((tempCountDownDuration % (24 * 60 * 60)) % (60 * 60)) / 60);
+      // 秒数
+      sec = parseInt(((tempCountDownDuration % (24 * 60 * 60)) % (60 * 60)) % 60);
+      // 拼接字符串
+      let tempStr = "";
+      if (day > 0) {
+        if (day <= 9) {
+          tempStr = "0" + day + "d ";
+        } else {
+          tempStr = day + "d ";
+        }
+      }
+
+      if (hour > 0) {
+        if (hour <= 9) {
+          tempStr = tempStr + "0" + hour + ":";
+        } else {
+          tempStr = tempStr + hour + ":";
+        }
+      } else {
+        tempStr = tempStr + "00:";
+      }
+
+      if (min > 0) {
+        if (min <= 9) {
+          tempStr = tempStr + "0" + min + ":";
+        } else {
+          tempStr = tempStr + min + ":";
+        }
+      } else {
+        tempStr = tempStr + "00:";
+      }
+
+      if (sec > 0) {
+        if (sec <= 9) {
+          tempStr = tempStr + "0" + sec;
+        } else {
+          tempStr = tempStr + sec;
+        }
+      } else {
+        tempStr = tempStr + "00";
+      }
+
+      this.setData({
+        countDownTime: tempStr
+      })
+    } else {
+      if (this.currentType.typeId == 0) {
+        this.setData({
+          countDownTime: "本场秒杀已经结束！"
+        }) 
+      } else if (this.currentType.typeId == 1) {
+        this.setData({
+          countDownTime: "本场秒杀已经开始！"
+        }) 
+      }
+      // 结束倒计时定时器
+      clearInterval(this.data.countDownIntervalID);
+      // 请求下一场秒杀数据
+      this.getNextSeckillData();
+    }
+  },
+
+  /**
+   * 获取下一场秒杀数据
+   */
+  getNextSeckillData: function () {
+    if (this.data.currentType.typeId == 0) {
+      this.setData({
+        currentSeckillEndTime: "2019-07-11 10:55:00"
+      })
+    } else if (this.data.currentType.typeId == 1) {
+      this.setData({
+        nextSeckillStartTime: "2019-07-11 10:56:00"
+      })
+    } 
+    this.getCountDownDuration();
   },
 
   /** =========================================================== */
@@ -182,38 +302,32 @@ Page({
    * 点击Banner
    */
   tapBanner: function (e) {
-    console.log("点击Banner: \n" + e.currentTarget.dataset.targeturl);
+    console.log("药秒杀 => 点击Banner: \n" + e.currentTarget.dataset.targeturl);
   },
 
   /**
    * 点击秒杀商品
    */
   tapSeckillGoods: function (e) {
-    console.log("秒杀 商品: \n" + e.currentTarget.dataset.goodsid);
+    console.log("药秒杀 => 秒杀 商品: \n" + e.currentTarget.dataset.goodsid);
   },
 
   /**
    * 点击秒杀
    */
   tapJoinSecKill: function (e) {
-    console.log("秒杀 点击秒杀: \n" + e.currentTarget.dataset.goodsid);
+    console.log("药秒杀 => 秒杀 点击秒杀: \n" + e.currentTarget.dataset.goodsid);
   }, 
-
-  /**
-   * 倒计时结束
-   */
-  countDownFinish: function () {
-    console.log("倒计时结束");
-  },
 
   /**
    * 点击类型
    */
   tapType: function (e) {
-    console.log("点击类型： \n" + JSON.stringify(e));
+    console.log("药秒杀 => 点击类型： \n" + JSON.stringify(e));
     this.setData({
       currentType: this.data.typeList[e.detail.key]
     })
+    this.getCountDownDuration();
   },
 
   /**

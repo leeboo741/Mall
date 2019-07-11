@@ -197,21 +197,21 @@ Page({
    * 点击商品分类
    */
   tapGoodsType: function (e) {
-    console.log("点击商品分类: \n" + e.currentTarget.dataset.type);
+    console.log("首页 => 点击商品分类: \n" + e.currentTarget.dataset.type);
   },
 
   /**
    * 点击Banner
    */
   tapBanner: function (e) {
-    console.log("点击Banner: \n" + e.currentTarget.dataset.targeturl);
+    console.log("首页 => 点击Banner: \n" + e.currentTarget.dataset.targeturl);
   },
 
   /**
    * 点击操作按钮
    */
   tapAction: function (e) {
-    console.log("点击操作: \n" + e.currentTarget.dataset.actionid);
+    console.log("首页 => 点击操作: \n" + e.currentTarget.dataset.actionid);
     if (e.currentTarget.dataset.actionid == 4) {
 
     } else {
@@ -225,42 +225,42 @@ Page({
    * 点击新人专享 更多
    */
   tapNewCustomer: function () {
-    console.log("新人专享 查看更多");
+    console.log("首页 => 新人专享 查看更多");
   },
 
   /**
    * 点击新人红包
    */
   tapNewCustomerPackage: function () {
-    console.log("新人专享 红包");
+    console.log("首页 => 新人专享 红包");
   },
 
   /**
    * 点击新人专享 商品
    */
   tapNewCustomerGoods: function (e) {
-    console.log("新人专享 商品: \n" + e.currentTarget.dataset.goodsid);
+    console.log("首页 => 新人专享 商品: \n" + e.currentTarget.dataset.goodsid);
   },
 
   /**
    * 点击团购专区 更多
    */
   tapGroupon: function () {
-    console.log("团购专区 查看更多");
+    console.log("首页 => 团购专区 查看更多");
   },
 
   /**
    * 点击团购专区 商品
    */
   tapGrouponGoods: function (e) {
-    console.log("团购专区 商品: \n" + e.currentTarget.dataset.goodsid);
+    console.log("首页 => 团购专区 商品: \n" + e.currentTarget.dataset.goodsid);
   },
 
   /**
    * 点击加入团购
    */
   tapJoinGroupon: function (e) {
-    console.log("团购专区 点击抢购: \n" + e.currentTarget.dataset.goodsid);
+    console.log("首页 => 团购专区 点击抢购: \n" + e.currentTarget.dataset.goodsid);
   },
 
   /**

@@ -1,2 +1,36 @@
 <!--pages/preferential/preferential.wxml-->
-<text>pages/preferential/preferential.wxml</text>
+<view wx:for='{{couponList}}'
+      wx:for-item='couponItem'
+      wx:for-index='couponIndex'
+      wx:key='{{couponIndex}}'
+      class='coupon-item'>
+  <view class='coupon-info-left'>
+    <image class='coupon-info-image' 
+           src='{{couponItem.couponImageUrl}}' 
+           lazy-load='{{true}}'
+           mode='scaleToFit'>
+    </image>
+  </view>
+  <view class='coupon-info-center'>
+    <view class='coupon-name bottom-space'>{{couponItem.name}}</view>
+    <view class='coupon-description bottom-space'>{{couponItem.description}}</view>
+    <view class='coupon-label bottom-space'>
+      <view wx:for='{{couponItem.labels}}' 
+            wx:for-item="labelItem"
+            wx:for-index='labelIndex'
+            wx:key='{{labelIndex}}'
+            class='coupon-label-item'>
+      {{labelItem}}
+      </view>
+    </view>
+    <view class='coupon-surplus-count'>剩余：{{couponItem.surplusCount}}</view>
+  </view>
+  <view class='coupon-info-right'>
+    <view class='coupon-receive-button' bindtap='tapReceiveCoupon' data-couponid='{{couponItem.id}}'>
+      <view class='coupon-receive-button-title'>立</view>
+      <view class='coupon-receive-button-title'>即</view>
+      <view class='coupon-receive-button-title'>领</view>
+      <view class='coupon-receive-button-title'>取</view>
+    </view>
+  </view>
+</view>
