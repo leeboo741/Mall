@@ -62,17 +62,15 @@
     </view>
   </view>
   <view class='count-down'>
-    <view wx:if='{{currentType.typeId==0}}' class='count-down-title'>距结束还剩</view>
-    <view wx:elif='{{currentType.typeId==1}}' class='count-down-title'>距开始还有</view>
-    <view class='count-down-value'>{{countDownTime}}</view>
-    <!-- <i-count-down
-              target="{{countDownTarget}}"
-              format="{{myFormat}}"
-              clear-timer="{{clearCountDown}}"
-              countdown-class="count-down-value"
-              bindcallback="countDownFinish"
-              restart='{{countDownRestart}}'>
-    </i-count-down> -->
+    <view wx:if='{{currentType.typeId==0}}' class='count-down-title'>
+    距结束还剩
+    </view>
+    <view wx:elif='{{currentType.typeId==1}}' class='count-down-title'>
+    距开始还有
+    </view>
+    <view class='count-down-value'>
+    {{countDownTime}}
+    </view>
   </view>
 </view>
 <!-- =========================================================================================== -->

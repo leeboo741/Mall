@@ -1,10 +1,36 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+
+/**
+ * ==================================================================
+ * ===================== Font Start ================
+ * ==================================================================
+ */
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1562922749657'); /* IE9 */
+  src: url('iconfont.eot?t=1562922749657#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKwAAsAAAAABkwAAAJmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApUcgE2AiQDCAsGAAQgBYRtBzIbmgXIPkA2ZAO1TiREaHRq52QAyXc6f67zLGXXsxbx8Pz9qHP/e1MRON4ckTQ2Qr2LtiIN0rYg/2ou94voqlYXkNWjDuwlF/jLXPbJlcC3RlaZVkggW88JMMrdFCx79UrrK8XJ75PU+jpVnAarTtQn7p3+CfRBWg8ox71orEmTuoC6OJAC3AvbZGWSeMPYBS7hPIFag/ol1jb309Ags6YF4kE6BjTk/LLMUtVCZc3aLD6qUF08FffAh/D78c9oNFCoSKyKzfsNG5Z/sjPSQXng1CcECGhzBRLmgUzs1sbXVQvGVauN1xgF+yoNfipL3yb2ahbsr7OK60E/lNyT1JXdaqqA2+qrG5gY9Xiiu3RVUzq4Pdt29XlkD5pi/6Zc+/WXif/j6L14/yhjtKcxvfD/Zf2I/kam5bU2LWEZoDyVagSCqzdsn7+hOYMfqf9wQnmWMqp35gh+irRnS9bllrXIqrS2s9B9sqpatShhd6unsYaOO0iHah0jnFUGUiTVxsnMzqNCnQVUqraIWnO2Ntdpo1WLXINZpwCh2R0KjT4hafZAZvYRFTp9olJzVKPWfnTvWWcyZNOaJoPJRrOC0lJ54di5KSpNklMIDJ2Vh7ws6ViGcGRwuJjaojzpORbERWeUWaDQKsRNcBkFgcJIK48sHnSZo9mhIVH3pkFLhdBklUYMjNiQqQJJFiVP+N1ZU+nzScRREDDolqaaeBbRYnJwNGLQcA9yS5Pv1XQv18SKHKMYE5CgKSG0CUaRQEBBUf0oD7GwQe6IaGTWkN1O9NUMrq8Lv24P1LKMRdjDk+pH15DlgpEHAA==') format('woff2'),
+  url('iconfont.woff?t=1562922749657') format('woff'),
+  url('iconfont.ttf?t=1562922749657') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1562922749657#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iconshaixuan:before {
+  content: "\e62a";
+}
+
+/**
+ * ==================================================================
+ * ===================== Font End ================
+ * ==================================================================
+ */
+
+

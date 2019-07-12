@@ -49,7 +49,6 @@
 .groupon-list{
   display: flex;
   flex-direction: column;
-  /* margin-top: 120rpx; */
 }
 
 .groupon-goods-item{
