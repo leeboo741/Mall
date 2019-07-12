@@ -1,2 +1,73 @@
 <!--pages/groupon/groupon.wxml-->
-<text>pages/groupon/groupon.wxml</text>
+<view class='head-area'>
+  <view class='head-left-area'>
+  </view>
+  <view class='head-center-area'>
+    <i-icon type='search' 
+            size="28"
+            color='#d2d2d2'>
+    </i-icon>
+    <input class='search-input'
+           placeholder='搜索'
+           placeholder-class='search-input-placeholder'
+           bindconfirm='searchConfirm'>
+    </input>
+  </view>
+  <view class='head-right-area'>
+  </view>
+</view>
+<view class='groupon-list'>
+  <view class='groupon-goods-item'
+        wx:for='{{goodsList}}'
+        wx:for-item='goodsItem'
+        wx:for-index='goodsIndex'
+        wx:key='{{goodsIndex}}'
+        bindtap='tapGrouponGoods'
+        data-goodsid='{{goodsItem.id}}'>
+    <image class='groupon-goods-item-image'
+           src='{{goodsItem.imageUrl}}'
+           mode='scaleToFit'
+           lazy-load='{{true}}'>
+    </image>
+    <view class='groupon-goods-item-info'>
+      <view class='groupon-goods-item-info-content goods-name bottom-space'>
+      {{goodsItem.name}}  
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space goods-factory'>
+      厂家：{{goodsItem.factory}}
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space'>
+        <view class='groupon-goods-item-info-content goods-specification'>
+        规格：{{goodsItem.specification}}
+        </view>
+        <view class='groupon-goods-item-info-content goods-unit'>
+        单位：{{goodsItem.unit}}
+        </view>
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space goods-approval'>
+      批准文号：{{goodsItem.approval}}
+      </view>
+      <view class='groupon-goods-item-info-content bottom-space'>
+        <view class='groupon-goods-item-info-content goods-differCount'>
+        还差{{goodsItem.differCount}}人拼成
+        </view>
+        <view class='groupon-goods-item-info-content goods-currentCount'>
+        已拼{{goodsItem.currentCount>1000?"1000+":goodsItem.currentCount}}
+        </view>
+      </view>
+      <view class='groupon-goods-item-info-content'>
+        <view class='groupon-goods-item-info-content goods-groupon-price'>
+        ￥{{goodsItem.grouponPrice}}
+        </view>
+        <view class='groupon-goods-item-info-content goods-original-price'>
+        ￥{{goodsItem.originalPrice}}
+        </view>
+        <view class='groupon-goods-item-info-content goods-join-button'
+              catchtap='tapJoinGroupon'
+              data-goodsid='{{goodsItem.id}}'>
+        药抢
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

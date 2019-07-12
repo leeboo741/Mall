@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "团购"
+  "usingComponents": {
+    "i-icon":"/dist/icon/index"
+  },
+  "navigationBarTitleText": "团购列表"
 }
