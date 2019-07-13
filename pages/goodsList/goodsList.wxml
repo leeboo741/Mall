@@ -30,24 +30,29 @@
     </view>
     <i-icon type="play_fill"
             color='#ee2c2c'
-            i-class='trangle-up'>
+            i-class='{{openTypeList?"trangle-down":"trangle-up"}}'>
     </i-icon>
   </view>
-  <view class='selector-item'>
-    <view class='selector-item-title'>
+  <view class='selector-item'
+        bindtap='tapOrderRule'
+        data-rule='0'>
+    <view class='selector-item-title {{selectOrderRule==0?"selector-item-title-selected":"selector-item-title-unselected"}}'>
     默认
     </view>
   </view>
-  <view class='selector-item'>
-    <view class='selector-item-title'>
+  <view class='selector-item'
+        bindtap='tapOrderRule'
+        data-rule='1'>
+    <view class='selector-item-title {{selectOrderRule==1?"selector-item-title-selected":"selector-item-title-unselected"}}'>
     最新
     </view>
   </view>
-  <view class='selector-item'>
-    <view class='selector-item-title'>
+  <view class='selector-item'
+        bindtap='tapFilter'>
+    <view class='selector-item-title {{openFilter?"filter-open":"filter-close"}}'>
     筛选
     </view>
-    <icon class='iconfont iconshaixuan fliter-icon'>
+    <icon class='iconfont iconshaixuan fliter-icon {{openFilter?"filter-open":"filter-close"}}'>
     </icon>
   </view>
 </view>

@@ -67,6 +67,14 @@
   color: #778899;
 }
 
+.selector-item-title-selected{
+  color: #ee2c2c;
+}
+
+.selector-item-title-unselected{
+  color: #778899;
+}
+
 .trangle-up{
   transform: rotate(270deg); 
 }
@@ -77,6 +85,14 @@
 
 .fliter-icon{
   font-size: 32rpx;
+  color: #ee2c2c;
+}
+
+.filter-open{
+  color: #ee2c2c;
+}
+
+.filter-close{
   color: #778899;
 }
 

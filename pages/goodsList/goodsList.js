@@ -91,6 +91,9 @@ Page({
         imageUrl: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1562663479241&di=73911abb3307641eee7d08320a1cfea5&imgtype=0&src=http%3A%2F%2Fp1.maiyaole.com%2Fimg%2F976%2F976435%2Forg_org.jpg%3Fv%3D1"
       },
     ], // 团购商品列表
+    openTypeList: false, // 打开分类列表
+    selectOrderRule: 0, // 选中排序规则
+    openFilter: false, // 打开筛选页面
   },
 
   /** =========================================================== */
@@ -148,6 +151,33 @@ Page({
   /** =========================================================== */
   /** ================ 页面事件 Start */
   /** =========================================================== */
+
+  /**
+   * 点击全部分类
+   */
+  tapAll: function () {
+    this.setData({
+      openTypeList: !this.data.openTypeList
+    })
+  },
+
+  /**
+   * 选择排序规则
+   */
+  tapOrderRule: function (e) {
+    this.setData({
+      selectOrderRule: e.currentTarget.dataset.rule
+    })
+  },
+
+  /**
+   * 点击筛选
+   */
+  tapFilter: function () {
+    this.setData({
+      openFilter: !this.data.openFilter
+    })
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
